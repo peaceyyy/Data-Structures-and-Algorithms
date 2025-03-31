@@ -86,16 +86,8 @@ void insertSorted(Node **head, int value)
 
     Node *traverser = *head;
 
-    while (traverser->next != NULL)
-    {
-
-        if (value >= traverser->next->value)
-        {
-            break;
-        }
-        traverser = traverser->next;
-    }
-
+    while (traverser->next != NULL && value >= traverser->next->value) traverser = traverser->next;
+    
     insertAfterANode(traverser, value);
 }
 
