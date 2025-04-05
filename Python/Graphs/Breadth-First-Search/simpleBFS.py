@@ -9,7 +9,7 @@ class Graph:
             else:
                 self.edges_dict[loc] = [des]
 
-    def get_paths(self, start, end, path=[]):
+    def get_pathsBFS (self, start, end, path=[]):
         path = path + [start]
 
         if start == end:
