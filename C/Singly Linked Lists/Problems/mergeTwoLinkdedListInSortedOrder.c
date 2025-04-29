@@ -24,53 +24,40 @@ node_t *createNode(int val)
 node_t *mergeSortedLists(node_t *head1, node_t *head2)
 {
 
-    if (head1 == NULL)
-        return head2;
-    if (head2 == NULL)
-        return head1;
+    node_t* newHead = NULL;
 
-    node_t *mergedHead = NULL;
 
-    if (head1->val <= head2->val)
+    if (head1 -> val <= head2 -> val)
     {
-        mergedHead = head1;
-        head1 = head1->next;
-    }
-    else
-    {
-        mergedHead = head2;
-        head2 = head2->next;
+        newHead = head1;
+        head1 = head1 -> next;
+    } else {
+        newHead = head2;
+        head2 = head2 -> next;
     }
 
-    node_t *current = mergedHead;
+    node_t* trav = newHead;
 
     while (head1 != NULL && head2 != NULL)
     {
-        if (head1->val <= head2->val)
+        if (head1 -> val <= head2 ->val)
         {
-            current->next = head1;
-            head1 = head1->next;
-        }
-        else
-        {
-            current->next = head2;
-            head2 = head2->next;
-        }
-        current = current->next;
+            trav -> next = head1;
+            head1 = head1 -> next;
+        } else {
+            trav -> next = head2;
+            head2 = head2 -> next;
+        }   
+
+        trav = trav -> next;
     }
 
-    if (head1 != NULL)
-    {
-        current->next = head1;
-    }
-    else
-    {
-        current->next = head2;
-    }
+    if (head1 !=NULL) trav -> next = head1;
+    else if (head2 !=NULL) trav -> next = head2;
 
-    return mergedHead;
+    return newHead;
+
 }
-
 
 void printList(node_t *head)
 {
@@ -87,7 +74,7 @@ int main()
 {
     // First sorted linked list: 1 -> 3 -> 5
     node_t *head1 = createNode(1);
-    head1->next = createNode(9);
+    head1->next = createNode(3);
     head1->next->next = createNode(5);
 
     // Second sorted linked list: 2 -> 4 -> 6
