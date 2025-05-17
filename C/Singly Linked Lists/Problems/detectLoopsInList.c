@@ -44,8 +44,34 @@ int numOfNodes(node_t* head) {
 }
 
 
-int main(){
+bool detectForLoops (node_t* head)
+{
 
+    node_t* slowPtr = head;
+    node_t* fastPtr = head;
+
+
+    while (fastPtr != NULL && fastPtr -> next != NULL)
+    
+    {
+
+           slowPtr = slowPtr -> next;
+        fastPtr = fastPtr ->next -> next;
+
+        if (slowPtr == fastPtr){
+            return true;
+        }
+
+
+     
+    }
+
+    return false;
+}   
+
+
+
+int main() {
     node_t* head = malloc(sizeof(node_t));
     head->x = 9;
     head->next = NULL;
@@ -55,7 +81,24 @@ int main(){
     insertAtEnd(&head, 13);
     insertAtEnd(&head, 15);
 
- 
+        node_t* temp = head;
+    node_t* loopStart = head->next; // This is the node with value 10
+
+    // Traverse to the last node
+    while (temp->next != NULL) {
+        temp = temp->next;
+    }
+
+    // Create a loop
+    temp->next = loopStart;
+    
+
+    // Test for loop detection
+    if (detectForLoops(head)) {
+        printf("Loop detected in the linked list.\n");
+    } else {
+        printf("No loop detected in the linked list.\n");
+    }
 
     return 0;
 }

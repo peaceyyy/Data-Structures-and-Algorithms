@@ -49,7 +49,7 @@ void swapNodeValues(node_t* node1, node_t* node2){
 
 }
 
-void sortLL (node_t* head){
+void sortLLBubble (node_t* head){
 
     for (node_t* curr = head; curr -> next != NULL; curr = curr -> next){
 
@@ -58,6 +58,20 @@ void sortLL (node_t* head){
             if (trav->x > trav->next->x){
                 swapNodeValues(trav, trav->next);
             }
+        }
+    }
+}
+
+void sortLLInsertion (node_t* head){
+
+    for (node_t* curr = head; curr != NULL; curr = curr -> next)
+    {
+        node_t* trav = head;
+        while (trav != curr)
+        {
+            if (trav->x > curr -> x) swapNodeValues(trav, curr);
+
+            trav = trav -> next;
         }
     }
 }
@@ -90,7 +104,7 @@ int main() {
 
 
     printf("Sorted list:\n");
-    sortLL(head);
+    sortLLBubble(head);
     printLinkedList(head);
 
     node_t* temp;
