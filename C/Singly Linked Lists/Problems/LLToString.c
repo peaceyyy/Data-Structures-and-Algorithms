@@ -117,7 +117,7 @@ void deleteNode (node_t** head, int n, char* word)
 char* LLToString (node_t* head)
 {
     char* str = (char*) malloc(sizeof(char) * 20);
-    // str[0] = '\0';
+    str[0] = '\0';
 
 
     node_t* trav = head;
@@ -151,7 +151,7 @@ int main()
     for (int i = 0 ; i < numOfNodes; i++)
     {   
         printf("Input data for Node %d: ", i + 1);
-        scanf("%[^\n]", data);
+        scanf(" %[^\n]", data);
         insertNodeAtEnd(&head, data);
     }
 
