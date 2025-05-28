@@ -66,7 +66,7 @@ int main() {
     appendNode(&head1, 5);
     printf("Original List 1: ");
     printList(head1);
-    head1 = reverseList(head1, head1);
+    head1 = reverseList(head1);
     printf("Reversed List 1: ");
     printList(head1);
     // Expected Output: Reversed List 1: 5 -> 4 -> 3 -> 2 -> 1 -> NULL

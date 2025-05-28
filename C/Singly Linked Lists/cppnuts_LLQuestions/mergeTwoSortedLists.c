@@ -77,25 +77,22 @@ int main() {
 // Function to merge two sorted linked lists
 struct Node* mergeSortedLists(struct Node* list1, struct Node* list2) {
     if (list1 == NULL) return list2;
-    if (list2 == NULL) return list1;
 
-    struct Node* trav1 = list1;
-    struct Node* trav2 = list2;
     struct Node* sortedListHead = createNode(0);
     struct Node* curr = sortedListHead;
 
-    while (trav1 && trav2) {
-        if (trav1->data < trav2->data) {
-            curr->next = trav1;
-            trav1 = trav1->next;
+    while (list1 && list2) {
+        if (list1->data < list2->data) {
+            curr->next = list1;
+            list1 = list1->next;
         } else {
-            curr->next = trav2;
-            trav2 = trav2->next;
+            curr->next = list2;
+            list2 = list2->next;
         }
         curr = curr->next;
     }
 
-    curr -> next = (trav1) ? trav1 : trav2;
+    curr -> next = (list1) ? list1 : list2;
 
     return sortedListHead->next;
 }

@@ -45,8 +45,6 @@ void printList(ListNode *head)
     }
     printf("NULL\n");
 }
-
-// Placeholder for reversing the linked list function
 ListNode *reverseList(ListNode *head)
 {
 
